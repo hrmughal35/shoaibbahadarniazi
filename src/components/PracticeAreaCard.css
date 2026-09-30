@@ -1,0 +1,91 @@
+.practice-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 340px;
+  padding: 2.5rem 2.5rem 2.25rem;
+  background: var(--paper);
+  transition: background-color 0.5s var(--ease);
+}
+
+.practice-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s var(--ease);
+}
+
+.practice-card:hover {
+  background: #fff;
+}
+
+.practice-card:hover::before,
+.practice-card:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.practice-card__index {
+  font-family: var(--font-serif);
+  font-size: 2.75rem;
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+.practice-card__title {
+  margin-top: auto;
+  padding-top: 3rem;
+  font-size: 1.85rem;
+  line-height: 1.15;
+  color: var(--navy-900);
+}
+
+.practice-card__summary {
+  margin-top: 1rem;
+  font-size: 0.975rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.practice-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  transition: color 0.35s var(--ease);
+}
+
+.practice-card__more svg {
+  transition: transform 0.35s var(--ease);
+}
+
+.practice-card:hover .practice-card__more {
+  color: var(--navy-900);
+}
+
+.practice-card:hover .practice-card__more svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+  .practice-card {
+    min-height: 0;
+    padding: 2rem 1.5rem;
+  }
+
+  .practice-card__title {
+    padding-top: 1.5rem;
+  }
+}

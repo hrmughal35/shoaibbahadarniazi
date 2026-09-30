@@ -1,0 +1,26 @@
+.practice {
+  background: var(--paper);
+}
+
+.practice__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+@media (max-width: 1079px) {
+  .practice__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .practice__grid {
+    grid-template-columns: 1fr;
+  }
+}

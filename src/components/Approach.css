@@ -1,0 +1,121 @@
+.approach {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy-950);
+  color: var(--on-dark);
+}
+
+.approach__backdrop {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 78%;
+  pointer-events: none;
+}
+
+.approach__backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+  opacity: 0.26;
+  filter: grayscale(0.6) contrast(1.05);
+}
+
+.approach__backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(10, 17, 28, 0.35) 0%, var(--navy-950) 100%),
+    linear-gradient(to right, var(--navy-950) 0%, rgba(10, 17, 28, 0) 60%);
+}
+
+.approach__inner {
+  position: relative;
+}
+
+.approach__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: clamp(1rem, 4vw, 3rem) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.approach__step {
+  position: relative;
+  padding: 2.5rem 2rem 0 0;
+  border-top: 1px solid var(--rule-dark);
+}
+
+.approach__step::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 3rem;
+  height: 1px;
+  background: var(--gold);
+}
+
+.approach__step + .approach__step {
+  padding-left: 2rem;
+}
+
+.approach__step + .approach__step::before {
+  left: 2rem;
+}
+
+.approach__numeral {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--gold-soft);
+}
+
+.approach__step-title {
+  margin-top: 1.75rem;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--on-dark);
+}
+
+.approach__step-body {
+  margin-top: 1rem;
+  font-size: 0.975rem;
+  line-height: 1.7;
+  color: var(--on-dark-soft);
+}
+
+@media (max-width: 1079px) {
+  .approach__steps {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 3.5rem;
+  }
+
+  .approach__step:nth-child(odd) {
+    padding-left: 0;
+  }
+
+  .approach__step:nth-child(odd)::before {
+    left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .approach__steps {
+    grid-template-columns: 1fr;
+    row-gap: 2.75rem;
+  }
+
+  .approach__step,
+  .approach__step + .approach__step {
+    padding: 2rem 0 0;
+  }
+
+  .approach__step + .approach__step::before {
+    left: 0;
+  }
+}

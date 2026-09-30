@@ -1,0 +1,217 @@
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  color: var(--on-dark);
+}
+
+.concept-notice {
+  max-height: 40px;
+  overflow: hidden;
+  background: var(--navy-950);
+  border-bottom: 1px solid var(--rule-dark);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  line-height: 32px;
+  color: var(--on-dark-muted);
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: max-height 0.4s var(--ease);
+}
+
+.site-header.is-scrolled .concept-notice,
+.site-header.is-open .concept-notice {
+  max-height: 0;
+  border-bottom-color: transparent;
+}
+
+.site-header__bar {
+  border-bottom: 1px solid var(--rule-dark);
+  transition:
+    background-color 0.45s var(--ease),
+    border-color 0.45s var(--ease);
+}
+
+.site-header.is-scrolled .site-header__bar,
+.site-header.is-open .site-header__bar {
+  background: rgba(10, 17, 28, 0.97);
+  border-bottom-color: rgba(168, 141, 95, 0.22);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: var(--header-h);
+  transition: height 0.45s var(--ease);
+}
+
+.site-header.is-scrolled .site-header__inner {
+  height: 72px;
+}
+
+.site-nav {
+  margin-left: auto;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: 2.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  position: relative;
+  display: block;
+  padding-block: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-dark-soft);
+  transition: color 0.3s var(--ease);
+}
+
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+
+.site-nav a:hover {
+  color: var(--on-dark);
+}
+
+.site-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.site-header__cta {
+  min-height: 46px;
+  padding-inline: 1.4rem;
+  font-size: 0.75rem;
+  border-color: rgba(168, 141, 95, 0.7);
+}
+
+.site-header__cta:hover {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--navy-950);
+}
+
+.site-header__toggle {
+  display: none;
+  margin-left: auto;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  background: none;
+  border: 0;
+  color: var(--on-dark);
+  cursor: pointer;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  top: auto;
+  height: calc(100dvh - 72px);
+  background: var(--navy-950);
+  overflow-y: auto;
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+.mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding-block: 2.5rem 3rem;
+}
+
+.mobile-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-menu li {
+  border-bottom: 1px solid var(--rule-dark);
+  animation: menu-in 0.5s var(--ease) both;
+}
+
+.mobile-menu li:nth-child(2) { animation-delay: 40ms; }
+.mobile-menu li:nth-child(3) { animation-delay: 80ms; }
+.mobile-menu li:nth-child(4) { animation-delay: 120ms; }
+.mobile-menu li:nth-child(5) { animation-delay: 160ms; }
+
+.mobile-menu li a {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding-block: 1.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  color: var(--on-dark);
+}
+
+.mobile-menu__index {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+}
+
+.mobile-menu__cta {
+  margin-top: auto;
+  padding-top: 0;
+  width: 100%;
+}
+
+.mobile-menu ul + .mobile-menu__cta {
+  margin-top: 2.5rem;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 1079px) {
+  .site-nav,
+  .site-header__cta {
+    display: none;
+  }
+
+  .site-header__toggle {
+    display: grid;
+  }
+
+  .site-header__inner,
+  .site-header.is-scrolled .site-header__inner {
+    height: 72px;
+  }
+}
+
+@media (max-width: 560px) {
+  .concept-notice {
+    font-size: 0.6875rem;
+    letter-spacing: 0.03em;
+  }
+}
